@@ -1,0 +1,989 @@
+
+
+               GToTree v1.7.07 (github.com/AstrobioMike/GToTree)
+
+
+ ---------------------------------  RUN INFO  --------------------------------- 
+
+    Command entered:
+    /home/izhang/mambaforge/envs/gtotree/bin/GToTree -f all_DPANN.txt -H Archaea -o DPANN_derep_GToTree_out -B -G 0.25 -t
+
+
+    Input genome sources include:
+      - Fasta files listed in all_DPANN.txt (469 genomes)
+
+                             Total input genomes: 469
+
+    HMM source to be used:
+      - Archaea (76 targets)
+
+    Options set:
+      - The output directory has been set to "DPANN_derep_GToTree_out/"
+      - Taxonkit will be used to add NCBI taxonomy info to labels where possible
+      - Genome minimum gene-copy threshold ("-G") has been set to 0.25
+      - Running in "best-hit" mode
+
+ ############################################################################## 
+ ####            Working on the genomes provided as fasta files            ####
+ ############################################################################## 
+
+           It is currently 01:25 AM; the process started at 01:25 AM.
+               Current process runtime: 0 hours and 0 minutes.
+
+_______________________________________________________________________________
+
+
+ ############################################################################## 
+ ####                     Filtering genes by length                        ####
+ ############################################################################## 
+
+     Keeping those with lengths within 20% of the median for the gene set.
+
+           It is currently 01:59 AM; the process started at 01:25 AM.
+               Current process runtime: 0 hours and 34 minutes.
+
+   --------------------------------------------------------------------------   
+
+    Filtering Adenylsucc_synt sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering AdoHcyase sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering Archease sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering ATP-synt_D sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering ATP-synt_F sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering CarS-like sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering CTP-dep_RFKase sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering Diphthamide_syn sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering DNA_primase_lrg sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering dsDNA_bind sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering DUF357 sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering DUF359 sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering DUF655 sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering eIF-6 sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering FbpA sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering Ham1p_like sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering HMG-CoA_red sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering NDK sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering PPS_PS sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering Prefoldin sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering PTH2 sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering PyrI sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering Rib_5-P_isom_A sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering Ribosomal_L1 sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering Ribosomal_L13 sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering Ribosomal_L14 sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering Ribosomal_L15e sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering Ribosomal_L16 sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering Ribosomal_L21e sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering Ribosomal_L22 sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering Ribosomal_L23 sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering Ribosomal_L26 sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering Ribosomal_L29 sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering Ribosomal_L3 sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering Ribosomal_L31e sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering Ribosomal_L32e sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering Ribosomal_L37ae sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering Ribosomal_L39 sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering Ribosomal_L4 sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering Ribosomal_L44 sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering Ribosomal_L5e sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering Ribosomal_L6 sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering Ribosomal_S11 sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering Ribosomal_S13 sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering Ribosomal_S15 sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering Ribosomal_S17 sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering Ribosomal_S17e sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering Ribosomal_S19 sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering Ribosomal_S19e sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering Ribosomal_S2 sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering Ribosomal_S24e sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering Ribosomal_S27e sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering Ribosomal_S28e sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering Ribosomal_S3Ae sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering Ribosomal_S7 sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering Ribosomal_S8 sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering Ribosomal_S8e sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering Ribosomal_S9 sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering Ribosom_S12_S23 sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering RNA_pol_L_2 sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering RNA_pol_N sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering RNA_pol_Rpb4 sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering RNA_pol_Rpb6 sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering RNase_HII sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering RtcB sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering SecY sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering Spt4 sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering TIM sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering Trm56 sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering tRNA-synt_1c sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering tRNA-synt_1d sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering tRNA-synt_His sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering TruD sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering V_ATPase_I sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering vATP-synt_AC39 sequences by length...
+   --------------------------------------------------------------------------   
+
+    Filtering vATP-synt_E sequences by length...
+________________________________________________________________________________ 
+
+
+
+ ############################################################################## 
+ ####                Filtering genomes with too few hits                   ####
+ ############################################################################## 
+
+     Removing those with fewer than 25% of the total SCGs targeted.
+
+           It is currently 02:00 AM; the process started at 01:25 AM.
+               Current process runtime: 0 hours and 35 minutes.
+
+  ********************************** NOTICE **********************************  
+    3 genome(s) removed from analysis due to having too few hits.
+
+    Reported in "DPANN_derep_GToTree_out/run_files/Genomes_removed_for_too_few_hits.tsv".
+  ****************************************************************************  
+
+________________________________________________________________________________
+
+
+
+ ############################################################################## 
+ ####          Aligning, trimming, and inserting gap-sequences             ####
+ ############################################################################## 
+
+           It is currently 02:00 AM; the process started at 01:25 AM.
+               Current process runtime: 0 hours and 35 minutes.
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene Adenylsucc_synt; Number 1 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene AdoHcyase; Number 2 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene Archease; Number 3 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene ATP-synt_D; Number 4 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene ATP-synt_F; Number 5 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene CarS-like; Number 6 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene CTP-dep_RFKase; Number 7 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene Diphthamide_syn; Number 8 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene DNA_primase_lrg; Number 9 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene dsDNA_bind; Number 10 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene DUF357; Number 11 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene DUF359; Number 12 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene DUF655; Number 13 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene eIF-6; Number 14 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene FbpA; Number 15 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene Ham1p_like; Number 16 of 76.
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene HMG-CoA_red; Number 17 of 76.
+
+
+
+   --------------------------------------------------------------------------   
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene NDK; Number 18 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene PPS_PS; Number 19 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene Prefoldin; Number 20 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene PTH2; Number 21 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene PyrI; Number 22 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene Rib_5-P_isom_A; Number 23 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene Ribosomal_L1; Number 24 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene Ribosomal_L13; Number 25 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene Ribosomal_L14; Number 26 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene Ribosomal_L15e; Number 27 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene Ribosomal_L16; Number 28 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene Ribosomal_L21e; Number 29 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene Ribosomal_L22; Number 30 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene Ribosomal_L23; Number 31 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene Ribosomal_L26; Number 32 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene Ribosomal_L29; Number 33 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene Ribosomal_L3; Number 34 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene Ribosomal_L31e; Number 35 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene Ribosomal_L32e; Number 36 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene Ribosomal_L37ae; Number 37 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene Ribosomal_L39; Number 38 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene Ribosomal_L4; Number 39 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene Ribosomal_L44; Number 40 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene Ribosomal_L5e; Number 41 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene Ribosomal_L6; Number 42 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene Ribosomal_S11; Number 43 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene Ribosomal_S13; Number 44 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene Ribosomal_S15; Number 45 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene Ribosomal_S17; Number 46 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene Ribosomal_S17e; Number 47 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene Ribosomal_S19; Number 48 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene Ribosomal_S19e; Number 49 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene Ribosomal_S2; Number 50 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene Ribosomal_S24e; Number 51 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene Ribosomal_S27e; Number 52 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene Ribosomal_S28e; Number 53 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene Ribosomal_S3Ae; Number 54 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene Ribosomal_S7; Number 55 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene Ribosomal_S8; Number 56 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene Ribosomal_S8e; Number 57 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene Ribosomal_S9; Number 58 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene Ribosom_S12_S23; Number 59 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene RNA_pol_L_2; Number 60 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene RNA_pol_N; Number 61 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene RNA_pol_Rpb4; Number 62 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene RNA_pol_Rpb6; Number 63 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene RNase_HII; Number 64 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene RtcB; Number 65 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene SecY; Number 66 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene Spt4; Number 67 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene TIM; Number 68 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene Trm56; Number 69 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene tRNA-synt_1c; Number 70 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene tRNA-synt_1d; Number 71 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene tRNA-synt_His; Number 72 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene TruD; Number 73 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene V_ATPase_I; Number 74 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene vATP-synt_AC39; Number 75 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+   --------------------------------------------------------------------------   
+	    Aligning and cleaning gene vATP-synt_E; Number 76 of 76.
+   --------------------------------------------------------------------------   
+
+
+
+________________________________________________________________________________
+
+
+
+ ############################################################################## 
+ ####                  Catting all alignments together                     ####
+ ############################################################################## 
+
+           It is currently 05:10 PM; the process started at 01:25 AM.
+               Current process runtime: 15 hours and 45 minutes.
+
+
+________________________________________________________________________________
+
+
+
+ ############################################################################## 
+ ####                   Adding more informative headers                    ####
+ ############################################################################## 
+
+  ********************************** NOTICE **********************************
+    You specified to use Taxonkit to add lineage info (set with the '-t' flag),
+    but there were no taxids available (which typically come from inputs provided
+    as NCBI accessions or GenBank files that might hold that information).
+
+    In this case no lineage information could be added.
+  ***************************************************************************** 
+
+  ********************************** NOTICE **********************************
+    You specified to swap labels either with a specific mapping file (passed
+    to the '-m' flag) and/or by specifying to add NCBI or GTDB taxonomy info,
+    but none of these worked out :(
+
+    Genomes from your mapping file may have been filtered out, and there may
+    have been no accessible taxonomy information to retrieve (which typically
+    would come from inputs provided as NCBI accessions or GenBank files that
+    might hold that information).
+
+    In this case no labels could be swapped.
+  ***************************************************************************** 
+
+
+________________________________________________________________________________
+
+
+
+ ############################################################################## 
+ ####                         Running FastTreeMP                           ####
+ ############################################################################## 
+
+           It is currently 05:10 PM; the process started at 01:25 AM.
+               Current process runtime: 15 hours and 45 minutes.
+
+FastTree Version 2.1.11 Double precision (No SSE3), OpenMP (1 threads)
+Alignment: DPANN_derep_GToTree_out/Aligned_SCGs.faa
+Amino acid distances: BLOSUM45 Joins: balanced Support: SH-like 1000
+Search: Normal +NNI +SPR (2 rounds range 10) +ML-NNI opt-each=1
+TopHits: 1.00*sqrtN close=default refresh=0.80
+ML Model: Jones-Taylor-Thorton, CAT approximation with 20 rate categories
+Ignored unknown character X (seen 174345 times)
+      0.51 seconds: Top hits for    190 of    464 seqs (at seed    100)
+      0.79 seconds: Top hits for    328 of    464 seqs (at seed    200)
+      0.98 seconds: Top hits for    402 of    464 seqs (at seed    300)
+      1.11 seconds: Top hits for    446 of    464 seqs (at seed    400)
+      2.67 seconds: Joined    100 of    461
+      4.51 seconds: Joined    200 of    461
+      6.55 seconds: Joined    300 of    461
+      8.42 seconds: Joined    400 of    461
+Initial topology in 9.28 seconds
+Refining topology: 35 rounds ME-NNIs, 2 rounds ME-SPRs, 18 rounds ML-NNIs
+      9.27 seconds: ME NNI round 1 of 35, 1 of 462 splits
+      9.49 seconds: ME NNI round 1 of 35, 101 of 462 splits, 16 changes (max delta 0.032)
+      9.69 seconds: ME NNI round 1 of 35, 201 of 462 splits, 33 changes (max delta 0.032)
+      9.88 seconds: ME NNI round 1 of 35, 301 of 462 splits, 45 changes (max delta 0.042)
+     10.04 seconds: ME NNI round 1 of 35, 401 of 462 splits, 60 changes (max delta 0.042)
+     10.30 seconds: ME NNI round 2 of 35, 101 of 462 splits, 8 changes (max delta 0.022)
+     10.51 seconds: ME NNI round 2 of 35, 201 of 462 splits, 14 changes (max delta 0.022)
+     10.71 seconds: ME NNI round 2 of 35, 301 of 462 splits, 20 changes (max delta 0.022)
+     10.86 seconds: ME NNI round 2 of 35, 401 of 462 splits, 23 changes (max delta 0.028)
+     11.15 seconds: ME NNI round 3 of 35, 101 of 462 splits, 5 changes (max delta 0.025)
+     11.33 seconds: ME NNI round 3 of 35, 201 of 462 splits, 9 changes (max delta 0.025)
+     11.48 seconds: ME NNI round 3 of 35, 301 of 462 splits, 10 changes (max delta 0.025)
+     11.70 seconds: ME NNI round 4 of 35, 101 of 462 splits, 2 changes (max delta 0.009)
+     11.84 seconds: ME NNI round 5 of 35, 1 of 462 splits
+     12.02 seconds: ME NNI round 6 of 35, 1 of 462 splits
+     12.20 seconds: ME NNI round 8 of 35, 1 of 462 splits
+     12.31 seconds: SPR round   1 of   2, 1 of 926 nodes
+     14.89 seconds: SPR round   1 of   2, 101 of 926 nodes
+     18.40 seconds: SPR round   1 of   2, 201 of 926 nodes
+     21.73 seconds: SPR round   1 of   2, 301 of 926 nodes
+     25.31 seconds: SPR round   1 of   2, 401 of 926 nodes
+     28.22 seconds: SPR round   1 of   2, 501 of 926 nodes
+     31.75 seconds: SPR round   1 of   2, 601 of 926 nodes
+     34.72 seconds: SPR round   1 of   2, 701 of 926 nodes
+     37.59 seconds: SPR round   1 of   2, 801 of 926 nodes
+     40.15 seconds: SPR round   1 of   2, 901 of 926 nodes
+     40.96 seconds: ME NNI round 12 of 35, 1 of 462 splits
+     41.16 seconds: ME NNI round 12 of 35, 101 of 462 splits, 0 changes
+     41.37 seconds: ME NNI round 12 of 35, 201 of 462 splits, 0 changes
+     41.56 seconds: ME NNI round 12 of 35, 301 of 462 splits, 0 changes
+     41.71 seconds: ME NNI round 12 of 35, 401 of 462 splits, 0 changes
+     44.54 seconds: SPR round   2 of   2, 101 of 926 nodes
+     48.08 seconds: SPR round   2 of   2, 201 of 926 nodes
+     50.91 seconds: SPR round   2 of   2, 301 of 926 nodes
+     54.40 seconds: SPR round   2 of   2, 401 of 926 nodes
+     57.52 seconds: SPR round   2 of   2, 501 of 926 nodes
+     61.05 seconds: SPR round   2 of   2, 601 of 926 nodes
+     63.96 seconds: SPR round   2 of   2, 701 of 926 nodes
+     66.81 seconds: SPR round   2 of   2, 801 of 926 nodes
+     69.26 seconds: SPR round   2 of   2, 901 of 926 nodes
+     70.07 seconds: ME NNI round 23 of 35, 1 of 462 splits
+     70.27 seconds: ME NNI round 23 of 35, 101 of 462 splits, 0 changes
+     70.47 seconds: ME NNI round 23 of 35, 201 of 462 splits, 0 changes
+     70.66 seconds: ME NNI round 23 of 35, 301 of 462 splits, 0 changes
+     70.83 seconds: ME NNI round 23 of 35, 401 of 462 splits, 0 changes
+Total branch-length 75.327 after 71.98 sec
+     72.12 seconds: ML Lengths 1 of 462 splits
+     78.98 seconds: ML Lengths 101 of 462 splits
+     85.78 seconds: ML Lengths 201 of 462 splits
+     92.46 seconds: ML Lengths 301 of 462 splits
+     98.88 seconds: ML Lengths 401 of 462 splits
+    102.78 seconds: ML NNI round 1 of 18, 1 of 462 splits
+    123.31 seconds: ML NNI round 1 of 18, 101 of 462 splits, 14 changes (max delta 242.156)
+    143.93 seconds: ML NNI round 1 of 18, 201 of 462 splits, 31 changes (max delta 242.156)
+    163.03 seconds: ML NNI round 1 of 18, 301 of 462 splits, 46 changes (max delta 242.156)
+    181.90 seconds: ML NNI round 1 of 18, 401 of 462 splits, 56 changes (max delta 242.156)
+ML-NNI round 1: LogLk = -2872592.713 NNIs 76 max delta 242.16 Time 193.39
+    195.69 seconds: Site likelihoods with rate category 1 of 20
+    197.99 seconds: Site likelihoods with rate category 2 of 20
+    200.28 seconds: Site likelihoods with rate category 3 of 20
+    202.57 seconds: Site likelihoods with rate category 4 of 20
+    204.90 seconds: Site likelihoods with rate category 5 of 20
+    207.19 seconds: Site likelihoods with rate category 6 of 20
+    209.49 seconds: Site likelihoods with rate category 7 of 20
+    211.78 seconds: Site likelihoods with rate category 8 of 20
+    214.07 seconds: Site likelihoods with rate category 9 of 20
+    216.35 seconds: Site likelihoods with rate category 10 of 20
+    218.64 seconds: Site likelihoods with rate category 11 of 20
+    220.92 seconds: Site likelihoods with rate category 12 of 20
+    223.21 seconds: Site likelihoods with rate category 13 of 20
+    225.50 seconds: Site likelihoods with rate category 14 of 20
+    227.79 seconds: Site likelihoods with rate category 15 of 20
+    230.07 seconds: Site likelihoods with rate category 16 of 20
+    232.36 seconds: Site likelihoods with rate category 17 of 20
+    234.64 seconds: Site likelihoods with rate category 18 of 20
+    236.93 seconds: Site likelihoods with rate category 19 of 20
+    239.22 seconds: Site likelihoods with rate category 20 of 20
+Switched to using 20 rate categories (CAT approximation)
+Rate categories were divided by 1.113 so that average rate = 1.0
+CAT-based log-likelihoods may not be comparable across runs
+Use -gamma for approximate but comparable Gamma(20) log-likelihoods
+    243.55 seconds: ML NNI round 2 of 18, 1 of 462 splits
+    262.68 seconds: ML NNI round 2 of 18, 101 of 462 splits, 6 changes (max delta 56.084)
+    283.88 seconds: ML NNI round 2 of 18, 201 of 462 splits, 10 changes (max delta 56.084)
+    304.52 seconds: ML NNI round 2 of 18, 301 of 462 splits, 21 changes (max delta 184.092)
+    323.43 seconds: ML NNI round 2 of 18, 401 of 462 splits, 29 changes (max delta 184.092)
+ML-NNI round 2: LogLk = -2695880.435 NNIs 34 max delta 184.09 Time 335.17
+    335.16 seconds: ML NNI round 3 of 18, 1 of 462 splits
+    354.12 seconds: ML NNI round 3 of 18, 101 of 462 splits, 3 changes (max delta 9.528)
+    374.61 seconds: ML NNI round 3 of 18, 201 of 462 splits, 4 changes (max delta 24.256)
+    394.76 seconds: ML NNI round 3 of 18, 301 of 462 splits, 5 changes (max delta 24.256)
+ML-NNI round 3: LogLk = -2695784.005 NNIs 5 max delta 24.26 Time 397.36
+    397.35 seconds: ML NNI round 4 of 18, 1 of 462 splits
+    417.63 seconds: ML NNI round 4 of 18, 101 of 462 splits, 0 changes
+ML-NNI round 4: LogLk = -2695782.553 NNIs 0 max delta 0.00 Time 433.28
+Turning off heuristics for final round of ML NNIs (converged)
+    433.27 seconds: ML NNI round 5 of 18, 1 of 462 splits
+    452.08 seconds: ML NNI round 5 of 18, 101 of 462 splits, 0 changes
+    472.83 seconds: ML NNI round 5 of 18, 201 of 462 splits, 0 changes
+    493.07 seconds: ML NNI round 5 of 18, 301 of 462 splits, 0 changes
+    512.25 seconds: ML NNI round 5 of 18, 401 of 462 splits, 0 changes
+ML-NNI round 5: LogLk = -2695772.643 NNIs 0 max delta 0.00 Time 523.55 (final)
+    523.55 seconds: ML Lengths 1 of 462 splits
+    529.50 seconds: ML Lengths 101 of 462 splits
+    535.94 seconds: ML Lengths 201 of 462 splits
+    542.27 seconds: ML Lengths 301 of 462 splits
+    548.43 seconds: ML Lengths 401 of 462 splits
+Optimize all lengths: LogLk = -2695772.221 Time 552.17
+    572.53 seconds: ML split tests for    100 of    461 internal splits
+    594.58 seconds: ML split tests for    200 of    461 internal splits
+    616.20 seconds: ML split tests for    300 of    461 internal splits
+    637.05 seconds: ML split tests for    400 of    461 internal splits
+Total time: 649.28 seconds Unique: 464/466 Bad splits: 0/461
+
+
+#################################################################################
+####                                 Done!!                                  ####
+#################################################################################
+
+  Overall, 466 genomes of the input 469 were retained (see notes below).
+
+    Tree written to:
+        DPANN_derep_GToTree_out/DPANN_derep_GToTree_out.tre
+
+    Alignment written to:
+        DPANN_derep_GToTree_out/Aligned_SCGs.faa
+
+    Main genomes summary table written to:
+        DPANN_derep_GToTree_out/Genomes_summary_info.tsv
+
+    Summary table with hits per target gene per genome written to:
+        DPANN_derep_GToTree_out/SCG_hit_counts.tsv
+
+    Partitions file (for downstream use with mixed-model treeing) written to:
+        DPANN_derep_GToTree_out/run_files/Partitions.txt
+
+ _______________________________________________________________________________
+
+  Notes:
+
+        3 genome(s) removed due to having too few hits to the targeted SCGs.
+        15 genome(s) had an estimated redundancy of >= 10%.
+
+    Reported along with additional informative run files in:
+        DPANN_derep_GToTree_out/run_files/
+
+ _______________________________________________________________________________
+
+    Log file written to:
+        DPANN_derep_GToTree_out/gtotree-runlog.txt
+ _______________________________________________________________________________
+
+    Programs used and their citations have been written to:
+        DPANN_derep_GToTree_out/citations.txt
+
+ _______________________________________________________________________________
+
+
+                                         Total process runtime: 15 hours and 56 minutes.

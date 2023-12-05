@@ -1,0 +1,9 @@
+##gff-version 3
+# Unnamed Length: 239
+# Unnamed Number of predicted TMRs: 2
+Unnamed	signal	1	26				
+Unnamed	outside	27	43				
+Unnamed	TMhelix	44	64				
+Unnamed	inside	65	81				
+Unnamed	TMhelix	82	102				
+Unnamed	outside	103	239				

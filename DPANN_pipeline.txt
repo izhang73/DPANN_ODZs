@@ -1,0 +1,166 @@
+#activate GtoTree conda environment
+conda activate gtotree
+
+#use EntrezDirect system to get everything with DPANN taxa in the name and get ftp links and accessions
+#example for Nanoarchaeota, repeat for other phyla
+esearch -db assembly -query "Nanoarchaeota" | esummary | xtract -pattern DocumentSummary -element AssemblyAccession,FtpPath_GenBank,FtpPath_RefSeq > ~/Desktop/all_DPANN/DPANN_ftp_links_for_download.txt
+
+#get only ftp links from Entrez search and download only *.fna.gz files
+awk -F ' ' '{print $1}' DPANN_ftp_links_for_download.txt > accessions.txt
+awk -F ' ' '{print $2}' DPANN_ftp_links_for_download.txt > ftps.txt
+cat ftps.txt | while read -r a; do wget $a/*.fna.gz; done
+
+#assess quality with checkm
+conda activate checkm
+checkm lineage_wf -t 8 -x fna genomes genomes_checkm
+
+#dereplicate MAGs with dRep while providing external CheckM information
+conda activate dRep
+
+#fix fasta file names by adding .fna before first comma
+sed 's/,/.fna,/' bin_stats_ext.csv > bin_stats_ext_fixed.csv
+export PATH=$PATH:/home/izhang/ANIcalculator_v1/
+
+#try dereplicating while providing external CheckM info
+dRep dereplicate DPANN_genomes_derep -g genomes/*.fna -sa 0.99 -comp 50 --genomeInfo bin_stats_ext_fixed.csv
+
+#difficulty getting dRep to accept external CheckM info, rerunning without taking into account completeness/contamination
+#removed completeness <50% genomes from list of genomes, remaining 243
+dRep dereplicate DPANN_genomes_derep_nocheckm -g genomes/*.fna -sa 0.99 --ignoreGenomeQuality
+
+#create a tree for genomes listed in DPANN_list.txt and include all dereplicated DPANN genomes
+#Use Archaeal single-copy genes and ask for only 25% of the genes to be present
+GToTree -f DPANN_all_derep.txt -H Archaea -o all_DPANN_derep_GToTree_out -B -G 0.25 -t
+
+#get all nosZ proteins using esearch and linearize
+esearch -db protein -query "NosZ" | efetch -format fasta > NosZ_NCBI.fa
+while read line ; do if [ "${line:0:1}" == ">" ]; then echo -e "\n"$line ; else  echo $line | tr -d '\n' ; fi ; done < NosZ_NCBI.fa | tail -n+2 > linear_nosZ.fasta
+
+#get headers only from esearch nosZ
+grep "nitrous-oxide reductase" NosZ_NCBI.fa > NosZ_NCBI_headers.txt
+grep "Nitrous-oxide reductase" NosZ_NCBI.fa > NosZ_NCBI_headers2.txt
+grep "Nitrous oxide reductase" NosZ_NCBI.fa > NosZ_NCBI_headers3.txt
+grep "nitrous oxide reductase" NosZ_NCBI.fa > NosZ_NCBI_headers4.txt
+grep "nosZ" NosZ_NCBI.fa > NosZ_NCBI_headers5.txt
+grep "NosZ" NosZ_NCBI.fa > NosZ_NCBI_headers6.txt
+cat NosZ_NCBI_headers* > all_nosZ_NCBI_headers.txt
+
+#get unique headers only
+awk '!seen[$0]++' all_nosZ_NCBI_headers.txt > all_nosZ_NCBI_headers_unique.txt
+
+#get sequences corresponding to unique headers
+seqtk subseq NosZ_NCBI.fa all_nosZ_NCBI_headers.txt > all_nosZ_fastas.fa
+#ended up with about 10,000 nosZ sequences
+
+#concatenate all nosZ sequences and get only those over 600aa to remove short, partial sequences
+cat all_nosZ_fastas.fa | seqkit seq -m 600 > nosZ_over_600aa.fa
+#ended up with about 8,000 sequences over 600 aa in length (average 661)
+
+#remove duplicate sequences
+seqkit rmdup -s < nosZ_over_600aa.faa > nosZ_over_600aa_unique.faa
+
+#housekeeping
+for dir in $(cat DPANN_genomes_derep.txt); do mv "$dir" dRep_PROKKA/; done
+
+#HMMsearch all DPANN genomes for denitrification genes
+hmmsearch HMM_profiles/narG_fungene.hmm all_derep_and_MAGs_DPANN.faa > all_derep_and_MAGs_DPANN_narG.out
+#ran all like above
+
+#get IDS for positive hits for denitrification genes, sulfate genes, etc.
+awk -F ' ' '{print $9}' all_derep_and_MAGs_Nano_nirK.hits | cut -f1 -d"_" > all_derep_and_MAGs_DPANN_nirK_IDs.txt
+#ran all like above
+
+#get protein sequences for each hit for each gene of interest
+seqtk subseq ../../all_derep_and_MAGs_DPANN.faa all_derep_and_MAGs_DPANN_nirK_proteins.txt > all_derep_and_MAGs_DPANN_nirK.faa
+seqtk subseq ../../all_derep_and_MAGs_DPANN.faa all_derep_and_MAGs_DPANN_nosZ_proteins.txt > all_derep_and_MAGs_DPANN_nosZ.faa
+seqtk subseq ../../all_derep_and_MAGs_DPANN.faa all_derep_and_MAGs_DPANN_soxB_proteins.txt > all_derep_and_MAGs_DPANN_soxB.faa
+
+#concatenate all hits as follows
+cat all_derep_and_MAGs_DPANN_nosZ.faa nosZ_over_600aa_unique.faa > cat_DPANN_nosZ_with_NCBI.faa
+
+#get stats on gene length, etc. with seqkit
+cat cat_DPANN_nosZ_with_NCBI.faa | seqkit seq | seqkit stats
+
+#align with MAFFT with auto parameters
+mafft --auto cat_DPANN_nosZ_with_NCBI.faa > cat_DPANN_nosZ_with_NCBI_MAFFT.faa
+mafft --auto --leavegappyregion cat_DPANN_nosZ_with_NCBI.faa > cat_DPANN_nosZ_with_NCBI_MAFFT_gappy.faa
+#used FFT-NS-2 method both times
+#proceed with gappy alignment after visual inspection
+
+#trim alignments with trimAL
+/Users/irene/Desktop/tools/trimAl/source/trimal -in cat_DPANN_nosZ_with_NCBI_MAFFT_gappy.fa -automated1 -htmlout cat_DPANN_nosZ_with_NCBI_trimal.html -out cat_DPANN_nosZ_with_NCBI_MAFFT_gappy_trimal.faa
+#errors but seems to work
+
+#use IQTree to find best-fit model for nosZ proteins 
+/Users/irene/Desktop/tools/iqtree-1.6.12-MacOSX/bin/iqtree -s cat_DPANN_nosZ_with_NCBI_MAFFT_gappy_trimal.faa -m MF -mset LG,WAG
+#Best-fit model: LG+R10 chosen according to BIC
+
+#Create actual tree with IQTree
+/Users/irene/Desktop/tools/iqtree-1.6.12-MacOSX/bin/iqtree -s cat_DPANN_nosZ_with_NCBI_MAFFT_gappy_trimal.faa -bb 1000 -alrt 1000 -m LG+R10
+/Users/irene/Desktop/tools/iqtree-1.6.12-MacOSX/bin/iqtree -s Aligned_SCGs.faa -m MF -mset LG,WAG &
+
+#hmmsearching script - put here for reference if needed
+for metagenome in prokka-*/*.faa; do hmmsearch HMM_profiles/rpS3_Diamond2019.hmm $metagenome > $metagenome.out; done
+
+#poor taxonomy associated with NCBI DPANN genomes, rerunning through GTDBtk
+gtdbtk classify_wf --genome_dir dereplicated_genomes/ --out_dir derep-DPANN-GTDBtk -x fna
+
+#Esearching for cytochrome C oxidase subunit II command
+esearch -db protein -query "cytochrome c oxidase subunit ii [PROT] AND bacteria [ORGN]" | efetch -format fasta > Cox_NCBI_bacteria.fa
+esearch -db protein -query "cytochrome c oxidase subunit ii [PROT] AND archaea [ORGN]" | efetch -format fasta > Cox_NCBI_archaea.fa
+cat Cox_NCBI_archaea.fa | seqkit seq -m 200 > Cox_NCBI_archaea_over200.fa 
+seqkit rmdup -s < Cox_NCBI_archaea_over200.fa > Cox_NCBI_archaea_over200_unique.fa
+seqkit rmdup -s < Cox_NCBI_bacteria_over200.fa > Cox_NCBI_bacteria_over200_unique.fa
+
+#clustering nosZ to get unique sequences for insertion into PA14 system (heterologous complementation test)
+usearch -cluster_fast Cox_NCBI_bacteria_over200_unique.fa -id 0.75 -centroids Cox_NCBI_bacteria_clustered.fa -uc clusters_bacteria.uc
+usearch -cluster_fast nosZ_over_600aa_unique.faa -id 0.9 -centroids nosZ_NCBI_clustered.fa -uc clusters_nosZ.uc
+
+#using vsearch as usearch doesn't work on 64-bit systems anymore
+/Users/irene/Desktop/tools/vsearch-2.22.1-macos-x86_64/bin/vsearch --sortbylength DPANN_MAGs_nosZ.ffn --output DPANN_MAGs_nosZ_sorted.ffn 
+/Users/irene/Desktop/tools/vsearch-2.22.1-macos-x86_64/bin/vsearch -cluster_fast DPANN_MAGs_nosZ_sorted.ffn -id 0.9 -centroids DPANN_MAGs_nosZ_clustered.ffn -uc clusters_DPANN.uc
+
+#Generate DNA alignments for heterologous complementation, downloaded a nosZ from PAO1 for alignment purposes
+mafft --auto --leavegappyregion DPANN_MAGs_nosZ.ffn > DPANN_MAGs_nosZ_MAFFT.ffn
+mafft --auto --leavegappyregion DPANN_MAGs_nosZ_with_PAO1.ffn > DPANN_MAGs_nosZ_with_PAO1_MAFFT.ffn
+
+#align Cox2 with nosZ
+cat *.fa > all_Cox_and_nosZ.fa
+mafft --auto --leavegappyregion all_Cox_and_nosZ.fa > all_Cox_and_nosZ__MAFFT_gappy.faa
+#poor alignment, probably due to large number of Cox2 sequences and divergence between proteins
+
+#picked 20 Cox2 sequences from different genera, families, domains etc. and saved in Cox_NCBI_picked.faa
+cat Cox_NCBI_picked.faa all_nosZ_NCBI_clustered_200to800.fa > NCBI_nosZ_picked_Cox.faa
+cat NCBI_nosZ_picked_Cox.faa all_derep_and_MAGs_DPANN_nosZ.fa > Cox_and_nosZ_with_DPANN.fa
+
+#align with MAFFT
+mafft --auto --leavegappyregion Cox_and_nosZ_with_DPANN.faa > nosZ_Cox_picked_MAFFT_gappy.faa
+#alignment improved
+
+#trim nosZ and Cox alignment with trimAl
+/Users/irene/Desktop/tools/trimAl/source/trimal -in nosZ_Cox_picked_MAFFT_gappy.faa -automated1 -htmlout nosZ_Cox_picked_MAFFT_gappy_trimal.html -out nosZ_Cox_picked_MAFFT_gappy_trimal.fa
+
+#run GtoTree using IQTree, in Best-Hit mode, with mapping file tree_mapping
+GToTree -f all_DPANN_new.txt -H Archaea -t -o GToTree_out_new -G 0.25 -B -T IQ-TREE -m tree_mapping.txt
+
+#run DPANN phylum tree in IQTree using output from GToTree and modified names 
+/Users/irene/Desktop/tools/iqtree-1.6.12-MacOSX/bin/iqtree -s GToTree_out_new/Aligned_SCGs_mod_names.faa -bb 1000 -mset LG,WAG -pre iqtree_out
+
+#run KOFAMSCAN
+#make sure it is right version of ruby
+#if it isn't, run:
+rvm list
+#run kofamscan
+~/Desktop/tools/kofamscan/kofam_scan-master/exec_annotation -f mapper -o result.txt AMAL10_bin15.faa 
+#run kofamscan on a directory of .faa files
+for i in *.faa
+do 
+~/Desktop/tools/kofamscan/kofam_scan-master/exec_annotation -f mapper -o ${i%.faa}"_kofam.txt" $i
+done
+
+#on cluster:
+module add engaging/iqtree/1.6.3 
+iqtree -s nosZ_Cox_picked_MAFFT_gappy_trimal.fa -bb 1000 -alrt 1000 -pre nosZ_Cox_DPANN
+
+#rest of analyses were performed in R and on the HPC cluster, see cluster files and R scripts
+

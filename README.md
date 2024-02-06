@@ -13,3 +13,4 @@ nosZ.hmm: HMM profile used for searching for nosZ in DPANN genomes
 
 .R files: R scripts used in analysis and visualization
 
+.sh files: Shell scripts used on HPC with associated parameters
